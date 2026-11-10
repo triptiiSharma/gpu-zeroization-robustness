@@ -1,0 +1,29 @@
+﻿# Python-generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Generated experiment evidence
+/artifacts/
+/phase5_review/
+
+# Review mapping: inspect before publication
+/results/phase5_private_mapping.csv
