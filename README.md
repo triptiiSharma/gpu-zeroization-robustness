@@ -232,6 +232,45 @@ Detailed methodology and validation information are available in the documentati
 
 Reproducing the complete compilation matrix requires the appropriate CUDA toolchains and experimental environment. Running the Python test suite alone does not reproduce the full research experiment.
 
+---
+
+## Interactive Dashboard & Live Demo
+
+This repository includes a Streamlit dashboard for exploring the GPU Memory Zeroization research results and verification evidence.
+
+### Features
+
+- **Experimental Overview:** Explore classification outcomes across GPU architectures, CUDA versions, optimization levels, constructs, and kernel contexts.
+- **Classification Explorer:** Inspect FULL_SIGNATURE, PARTIAL_SIGNATURE, STORE_ONLY, and ABSENT results with supporting instruction-level evidence.
+- **Cross-Tool Validation:** Review classification agreement between cuobjdump and nvdisasm.
+- **Reproducibility:** Explore repeated compilation results and consistency checks.
+- **Runtime Sanity Checks:** Review recorded GPU execution observations.
+- **Live Verification:** Execute bundled SASS classification examples and automated pytest tests.
+
+### Run Locally
+
+Clone the repository and open a terminal in its root directory.
+
+Install dashboard dependencies:
+
+```bash
+python -m pip install -r requirements-dashboard.txt
+```
+
+Launch the dashboard:
+
+```bash
+python -m streamlit run gpu_zeroization_dashboard.py
+```
+
+Open the local URL displayed by Streamlit (typically http://localhost:8501).
+
+### Interpretation
+
+The dashboard uses recorded experimental results and bundled test fixtures. Its classification checker evaluates static SASS instruction signatures; a FULL_SIGNATURE verdict does not establish that all GPU memory was securely erased along every execution path.
+
+The bundled live classification examples do not compile new GPU kernels or execute new GPU memory-erasure experiments. Original compiled artifacts may be unavailable in a fresh clone.
+
 ## Documentation
 
 | Document | Description |
@@ -275,42 +314,3 @@ The conference paper is not distributed through this repository. An official pub
 ---
 
 **Research repository accompanying the work presented at ICACSDF 2026.**
-
----
-
-## Interactive Dashboard & Live Demo
-
-This repository includes a Streamlit dashboard for exploring the GPU Memory Zeroization research results and verification evidence.
-
-### Features
-
-- **Experimental Overview:** Explore classification outcomes across GPU architectures, CUDA versions, optimization levels, constructs, and kernel contexts.
-- **Classification Explorer:** Inspect FULL_SIGNATURE, PARTIAL_SIGNATURE, STORE_ONLY, and ABSENT results with supporting instruction-level evidence.
-- **Cross-Tool Validation:** Review classification agreement between cuobjdump and nvdisasm.
-- **Reproducibility:** Explore repeated compilation results and consistency checks.
-- **Runtime Sanity Checks:** Review recorded GPU execution observations.
-- **Live Verification:** Execute bundled SASS classification examples and automated pytest tests.
-
-### Run Locally
-
-Clone the repository and open a terminal in its root directory.
-
-Install dashboard dependencies:
-
-```bash
-python -m pip install -r requirements-dashboard.txt
-```
-
-Launch the dashboard:
-
-```bash
-python -m streamlit run gpu_zeroization_dashboard.py
-```
-
-Open the local URL displayed by Streamlit (typically http://localhost:8501).
-
-### Interpretation
-
-The dashboard uses recorded experimental results and bundled test fixtures. Its classification checker evaluates static SASS instruction signatures; a FULL_SIGNATURE verdict does not establish that all GPU memory was securely erased along every execution path.
-
-The bundled live classification examples do not compile new GPU kernels or execute new GPU memory-erasure experiments. Original compiled artifacts may be unavailable in a fresh clone.
